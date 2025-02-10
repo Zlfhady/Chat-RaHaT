@@ -59,4 +59,4 @@ const CreateChannel = ({ createType, setIsCreating }) => {
     )
 }
 
-export default CreateChannel
+export default CreateChannel;

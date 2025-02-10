@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageList, MessageInput, Thread, Window, useChannelActionContext, Avatar, useChannelStateContext, useChatContext } from 'stream-chat-react';
+import { MessageList, MessageInput, Thread, Window, useChannelContext, Avatar, useChatContext } from 'stream-chat-react';
 
 import { ChannelInfo } from '../assets';
 
@@ -7,7 +7,7 @@ export const GiphyContext = React.createContext({});
 
 const ChannelInner = ({ setIsEditing }) => {
   const [giphyState, setGiphyState] = useState(false);
-  const { sendMessage } = useChannelActionContext();
+  const { sendMessage } = useChannelContext();
 
   const overrideSubmitHandler = (message) => {
     let updatedMessage = {
@@ -43,7 +43,7 @@ const ChannelInner = ({ setIsEditing }) => {
 };
 
 const TeamChannelHeader = ({ setIsEditing }) => {
-  const { channel, watcher_count } = useChannelStateContext();
+  const { channel, watcher_count } = useChannelContext();
   const { client } = useChatContext();
 
   const MessagingHeader = () => {
