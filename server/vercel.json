@@ -11,6 +11,12 @@
         "src": "/(.*)",
         "dest": "index.js"
       }
-    ]
+    ],
+    "functions": {
+      "index.js": {
+        "runtime": "nodejs18.x"
+      }
+    },
+    "installCommand": "npm install"
   }
   
