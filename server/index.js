@@ -15,10 +15,10 @@ const twilioClient = require('twilio')(accountSid, authToken);
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.send('Hello, World! Backend running on Vercel!');
 });
 
 app.post('/', (req, res) => {
@@ -37,9 +37,9 @@ app.post('/', (req, res) => {
                         .then(() => console.log('Message sent!'))
                         .catch((err) => console.log(err));
                 }
-            })
+            });
 
-            return res.status(200).send('Message sent!');
+        return res.status(200).send('Message sent!');
     }
 
     return res.status(200).send('Not a new message request');
@@ -47,4 +47,10 @@ app.post('/', (req, res) => {
 
 app.use('/auth', authRoutes);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Tambahkan ini agar kompatibel dengan Vercel
+module.exports = app;
+
+// Jalankan server hanya jika bukan di lingkungan Vercel
+if (process.env.NODE_ENV !== "vercel") {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
