@@ -28,11 +28,17 @@ const Auth = () => {
 
         const { username, password, phoneNumber, avatarURL } = form;
 
-        const API_URL = "https://server-nama-proyek.vercel.app";
+        const API_URL = "https://9f2cc0lm-3000.asse.devtunnels.ms/api"; // Jika backend menggunakan '/api'
+
+await axios.post(`${API_URL}/auth/${isSignup ? 'signup' : 'login'}`, {
+    username, password, fullName: form.fullName, phoneNumber, avatarURL,
+});
+
+
 
         
 
-        const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+        const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${API_URL}/auth/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName: form.fullName, phoneNumber, avatarURL,
         });
 
