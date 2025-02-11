@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
     res.send('Hello, World! Backend running on Vercel!');
 });
 
+app.get("/api/messages", (req, res) => {
+  res.json([{ id: 1, text: "Hello from backend!" }]);
+});
+
 app.post('/', (req, res) => {
     const { message, user: sender, type, members } = req.body;
 
