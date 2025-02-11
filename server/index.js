@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
+const API_URL = "https://chat-rahat-backend.vercel.app/api";
 const authRoutes = require("./routes/auth.js");
 
 const app = express();
