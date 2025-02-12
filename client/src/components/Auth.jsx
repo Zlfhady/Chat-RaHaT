@@ -28,11 +28,14 @@ const Auth = () => {
 
         const { username, password, phoneNumber, avatarURL } = form;
 
-        const API_URL = "https://9f2cc0lm-3000.asse.devtunnels.ms/api"; // Jika backend menggunakan '/api'
+        const API_URL = "https://9f2cc0lm-5000.asse.devtunnels.ms/"; // Jika backend menggunakan '/api'
 
 await axios.post(`${API_URL}/auth/${isSignup ? 'signup' : 'login'}`, {
     username, password, fullName: form.fullName, phoneNumber, avatarURL,
 });
+
+const SOCKET_URL = "wss://9f2cc0lm-3000.asse.devtunnels.ms/ws";
+const socket = new WebSocket(SOCKET_URL);
 
 
 
